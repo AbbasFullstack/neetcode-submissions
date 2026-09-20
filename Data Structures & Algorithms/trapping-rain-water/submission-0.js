@@ -1,0 +1,37 @@
+class Solution {
+        /**
+             * @param {number[]} height
+                  * @return {number}
+                       */
+                           trap(height) {
+                                   if (height.length === 0) return 0;
+                                           
+                                                   let left = 0;
+                                                           let right = height.length - 1;
+                                                                   let leftMax = 0;
+                                                                           let rightMax = 0;
+                                                                                   let water = 0;
+                                                                                           
+                                                                                                   while (left < right) {
+                                                                                                               if (height[left] < height[right]) {
+                                                                                                                               // Left side chhoti hai
+                                                                                                                                               if (height[left] >= leftMax) {
+                                                                                                                                                                   leftMax = height[left]; // Naya max mil gaya
+                                                                                                                                                                                   } else {
+                                                                                                                                                                                                       water += leftMax - height[left]; // Pani trap hua
+                                                                                                                                                                                                                       }
+                                                                                                                                                                                                                                       left++;
+                                                                                                                                                                                                                                                   } else {
+                                                                                                                                                                                                                                                                   // Right side chhoti hai
+                                                                                                                                                                                                                                                                                   if (height[right] >= rightMax) {
+                                                                                                                                                                                                                                                                                                       rightMax = height[right]; // Naya max mil gaya
+                                                                                                                                                                                                                                                                                                                       } else {
+                                                                                                                                                                                                                                                                                                                                           water += rightMax - height[right]; // Pani trap hua
+                                                                                                                                                                                                                                                                                                                                                           }
+                                                                                                                                                                                                                                                                                                                                                                           right--;
+                                                                                                                                                                                                                                                                                                                                                                                       }
+                                                                                                                                                                                                                                                                                                                                                                                               }
+                                                                                                                                                                                                                                                                                                                                                                                                       
+                                                                                                                                                                                                                                                                                                                                                                                                               return water;
+                                                                                                                                                                                                                                                                                                                                                                                                                   }
+                                                                                                                                                                                                                                                                                                                                                                                                                   }
